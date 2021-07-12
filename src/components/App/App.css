@@ -9,12 +9,12 @@
 
 .title {
   font-family: "Paytone One", sans-serif;
-  font-size: 64px;
+  font-size: 50px;
   text-shadow: 2px 2px lightpink, 5px 5px darkgrey;
 }
 
 .title span::first-letter {
-  font-size: 74px;
+  font-size: 64px;
 }
 
 .movie-list {

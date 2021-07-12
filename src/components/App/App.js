@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import Movie from "./components/Movie";
+import Movie from "../Movie";
 
+import { fetchMovieCatalog } from "../../fetchMovies";
 import "./App.css";
-import movies from "./movies";
 
 function App() {
-  const [movieList] = useState(movies);
+  const [movieList, setMovieList] = useState([]);
+
+  useEffect(() => {
+    async function load() {
+      setMovieList(await fetchMovieCatalog());
+    }
+    load();
+  }, []);
 
   return (
     <div className="app">
