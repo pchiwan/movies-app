@@ -1,0 +1,27 @@
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+
+  li {
+    padding: 15px 15px 0 15px;
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: white;
+      padding-bottom: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: all 100ms ease-in-out;
+
+      &:hover,
+      &.active {
+        border-bottom: 3px solid lavenderblush;
+      }
+    }
+  }
+}

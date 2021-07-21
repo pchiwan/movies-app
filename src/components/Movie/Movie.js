@@ -1,7 +1,7 @@
 import React from "react";
 
 import MoviePoster from "../MoviePoster";
-import "./Movie.css";
+import "./Movie.scss";
 
 function Movie({ movie }) {
   return (

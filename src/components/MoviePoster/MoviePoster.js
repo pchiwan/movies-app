@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./MoviePoster.css";
+import "./MoviePoster.scss";
 
 function MoviePoster({ src }) {
   const style = {
