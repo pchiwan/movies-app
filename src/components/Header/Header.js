@@ -1,11 +1,18 @@
 import React from "react";
 
-import Navbar from "../Navbar";
-import UserInfo from "../UserInfo";
+import Burger from "./Burger";
+import Navbar from "./Navbar";
+import UserInfo from "./UserInfo";
+import { useWidth } from "../../ResponsiveProvider";
 
 import "./Header.scss";
 
+const MIN_WIDTH = 740;
+
 const Header = () => {
+  const width = useWidth();
+  const showBurgerMenu = width <= MIN_WIDTH;
+
   return (
     <header>
       <h1 className="title">
@@ -14,8 +21,13 @@ const Header = () => {
           🍿
         </span>
       </h1>
-      <Navbar />
-      <UserInfo />
+      {showBurgerMenu && <Burger />}
+      {!showBurgerMenu && (
+        <>
+          <Navbar />
+          <UserInfo />
+        </>
+      )}
     </header>
   );
 };

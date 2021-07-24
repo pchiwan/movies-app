@@ -8,9 +8,22 @@
   .movie-title {
     font-size: 20px;
     font-weight: bold;
+    text-align: center;
   }
 
   .movie-info {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 740px) {
+  .movie {
+    .movie-title {
+      font-size: 16px;
+    }
+
+    .movie-info {
+      font-size: 14px;
+    }
   }
 }

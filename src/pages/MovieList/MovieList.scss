@@ -1,7 +1,25 @@
 .movie-list {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 40px;
+  grid-template-columns: repeat(3, 1fr);
   row-gap: 10px;
+}
+
+@media (min-width: 741px) and (max-width: 1400px) {
+  .movie-list {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 40px;
+  }
+}
+
+@media (min-width: 1401px) and (max-width: 1680px) {
+  .movie-list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 1681px) {
+  .movie-list {
+    grid-template-columns: repeat(6, 1fr);
+  }
 }

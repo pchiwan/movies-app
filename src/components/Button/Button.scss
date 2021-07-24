@@ -1,0 +1,28 @@
+.button {
+  background-color: crimson;
+  color: white;
+  margin-right: 8px;
+  border: 2px solid #555;
+  border-radius: 4px;
+  box-shadow: 0 2px #bbb;
+  font-size: 16px;
+  padding: 8px 16px;
+  cursor: pointer;
+  outline-color: crimson;
+  opacity: 1;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.9;
+    box-shadow: 0 1px #ccc;
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: auto;
+  }
+}

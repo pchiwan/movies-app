@@ -1,0 +1,65 @@
+.burger {
+  display: flex;
+  justify-content: right;
+  position: relative;
+  align-self: center;
+
+  .burger-button {
+    background-color: crimson;
+    border: 1px solid #555;
+    border-radius: 4px;
+    box-shadow: 0 2px #bbb;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 30px;
+    outline: none;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.9;
+      box-shadow: 0 1px #ccc;
+      transform: translateY(1px);
+    }
+
+    span {
+      width: 24px;
+      height: 3px;
+      background: #cdcdcd;
+      border-radius: 3px;
+    }
+  }
+
+  .burger-navbar {
+    list-style: none;
+    position: absolute;
+    width: 200px;
+    right: 0;
+    top: 40px;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    border: 1px solid #555;
+    border-radius: 4px;
+
+    li {
+      padding: 12px;
+      border-bottom: 1px solid #222;
+
+      a {
+        display: block;
+        text-decoration: none;
+        color: lavenderblush;
+        font-weight: bold;
+      }
+
+      &:hover {
+        background-color: crimson;
+      }
+    }
+  }
+}

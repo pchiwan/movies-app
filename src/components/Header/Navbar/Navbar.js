@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 
 import "./Navbar.scss";
 
-const Navbar = () => {
+const Navbar = ({ className = "navbar" }) => {
   return (
-    <ul className="navbar">
+    <ul className={className}>
       <li>
         <NavLink activeClassName="active" exact to="/">
           Home

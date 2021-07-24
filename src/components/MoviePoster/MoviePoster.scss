@@ -7,6 +7,9 @@
   background-position: center;
 }
 
-// smaller sizes
-// width: 128px
-// height: 190px
+@media (max-width: 1000px) {
+  .movie-poster {
+    width: 128px;
+    height: 190px;
+  }
+}

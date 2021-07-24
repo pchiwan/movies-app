@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
     setAuthData({
       ...authData,
       isAuthenticated: true,
-      name: "Commander Shepard",
+      name: "Shepard",
     });
   }
 
@@ -18,8 +18,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const value = {
-    isAuthenticated: false,
-    name: "",
+    ...authData,
     login,
     logout,
   };
