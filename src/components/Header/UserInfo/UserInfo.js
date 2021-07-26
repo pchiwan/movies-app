@@ -10,7 +10,12 @@ const UserInfo = () => {
 
   return (
     <div className="user-info">
-      <strong>User:</strong> {name || <Link to="/login">Login</Link>}
+      {name && (
+        <>
+          <strong>Hello</strong> {name}
+        </>
+      )}
+      {!name && <Link to="/login">Login</Link>}
     </div>
   );
 };

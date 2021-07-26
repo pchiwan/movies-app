@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Login from "../pages/Login";
-import MovieList from "../pages/MovieList";
+import Login, { Register } from "../pages/Login";
+import Catalog from "../pages/Catalog";
+import User from "../pages/User";
 import NotFound from "../pages/NotFound";
 import Header from "../components/Header";
 import AuthProvider from "../AuthProvider";
@@ -19,8 +20,10 @@ function App() {
             <Header />
             <main>
               <Switch>
-                <Route exact path="/" component={MovieList} />
+                <Route exact path="/" component={Catalog} />
+                <Route path="/user" component={User} />
                 <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
                 <Route path="*">
                   <NotFound />
                 </Route>

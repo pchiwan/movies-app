@@ -5,11 +5,10 @@ const AuthContext = React.createContext();
 const AuthProvider = ({ children }) => {
   const [authData, setAuthData] = useState({});
 
-  function login(username, password) {
+  function login(user) {
     setAuthData({
-      ...authData,
+      ...user,
       isAuthenticated: true,
-      name: "Shepard",
     });
   }
 

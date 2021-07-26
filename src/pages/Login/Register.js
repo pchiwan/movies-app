@@ -5,26 +5,30 @@ import * as authService from "../../services/authService";
 import { useAuthData } from "../../AuthProvider";
 import Form from "./Form";
 
-const Login = () => {
+const Register = () => {
   const history = useHistory();
   const { login } = useAuthData();
 
-  const handleSuccessfulLogin = (user) => {
+  const handleSuccessfulRegister = async (user) => {
     login(user);
     history.push("/");
   };
 
   return (
     <>
-      <Form onSubmit={authService.login} onSuccess={handleSuccessfulLogin} />
+      <Form
+        includeName
+        onSubmit={authService.register}
+        onSuccess={handleSuccessfulRegister}
+      />
       <p style={{ textAlign: "center" }}>
-        Don't have an account yet?{" "}
+        Already have an account?{" "}
         <strong>
-          <Link to="/register">Create one</Link>
+          <Link to="/login">Login</Link>
         </strong>
       </p>
     </>
   );
 };
 
-export default Login;
+export default Register;
