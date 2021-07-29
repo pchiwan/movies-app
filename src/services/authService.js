@@ -5,8 +5,11 @@ const AUTH_API_URL = `${API_URL}/auth`;
 export async function register(data) {
   const response = await fetch(`${AUTH_API_URL}/register`, {
     method: "POST",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
+      Accept: "application/json",
+      "Access-Control-Allow-Origin": window.location.origin,
     },
     body: JSON.stringify(data),
   });
@@ -16,8 +19,11 @@ export async function register(data) {
 export async function login(data) {
   const response = await fetch(`${AUTH_API_URL}/login`, {
     method: "POST",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
+      Accept: "application/json",
+      "Access-Control-Allow-Origin": window.location.origin,
     },
     body: JSON.stringify(data),
   });
@@ -31,4 +37,17 @@ export async function login(data) {
 
 export function logout() {
   return fetch(`${AUTH_API_URL}/logout`);
+}
+
+export async function getLoggedUser() {
+  const response = await fetch(`${AUTH_API_URL}/getuser`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Access-Control-Allow-Origin": window.location.origin,
+    },
+  });
+
+  return response.json();
 }
