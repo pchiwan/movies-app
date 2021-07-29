@@ -1,4 +1,4 @@
-import { API_URL } from "../config";
+import { API_URL } from "./config";
 
 const USER_API_URL = `${API_URL}/user/favorites`;
 
