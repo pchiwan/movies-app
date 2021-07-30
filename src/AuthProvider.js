@@ -1,9 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+
+import { getLoggedUser } from "./services/authService";
 
 const AuthContext = React.createContext();
 
 const AuthProvider = ({ children }) => {
   const [authData, setAuthData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function load() {
+      const user = await getLoggedUser();
+      if (user) {
+        login(user);
+      }
+      setIsLoading(false);
+    }
+    load();
+  }, []);
 
   function login(user) {
     setAuthData({
@@ -18,6 +32,7 @@ const AuthProvider = ({ children }) => {
 
   const value = {
     ...authData,
+    isLoading,
     login,
     logout,
   };
