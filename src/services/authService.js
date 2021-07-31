@@ -49,5 +49,10 @@ export async function getLoggedUser() {
     },
   });
 
-  return response.json();
+  try {
+    const data = await response.json();
+    return data;
+  } catch {
+    return null;
+  }
 }

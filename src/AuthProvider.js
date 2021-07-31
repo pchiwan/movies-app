@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 
+import Spinner from "./components/Spinner";
 import { getLoggedUser } from "./services/authService";
 
 const AuthContext = React.createContext();
@@ -32,12 +33,22 @@ const AuthProvider = ({ children }) => {
 
   const value = {
     ...authData,
-    isLoading,
     login,
     logout,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {isLoading ? (
+        <div className="app-spinner">
+          <Spinner />
+          <span>Loading</span>
+        </div>
+      ) : (
+        children
+      )}
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;

@@ -2,14 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { useAuthData } from "../../../AuthProvider";
-import Spinner from "../../Spinner";
 
 import "./UserInfo.scss";
 
 const UserInfo = () => {
-  const { isLoading, name } = useAuthData();
+  const { name } = useAuthData();
 
-  return !isLoading ? (
+  return (
     <div className="user-info">
       {name && (
         <>
@@ -18,8 +17,6 @@ const UserInfo = () => {
       )}
       {!name && <Link to="/login">Login</Link>}
     </div>
-  ) : (
-    <Spinner />
   );
 };
 
