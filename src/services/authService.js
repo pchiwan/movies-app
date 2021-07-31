@@ -36,7 +36,15 @@ export async function login(data) {
 }
 
 export function logout() {
-  return fetch(`${AUTH_API_URL}/logout`);
+  return fetch(`${AUTH_API_URL}/logout`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      "Access-Control-Allow-Origin": window.location.origin,
+    },
+  });
 }
 
 export async function getLoggedUser() {
