@@ -1,12 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import { useAuthData } from "../../../AuthProvider";
+import { useAuth } from "../../../AuthProvider";
 
 import "./Navbar.scss";
 
 const Navbar = ({ className = "navbar" }) => {
-  const { isAuthenticated } = useAuthData();
+  const { isAuthenticated } = useAuth();
 
   return (
     <ul className={className}>

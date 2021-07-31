@@ -2,12 +2,12 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import * as authService from "../../services/authService";
-import { useAuthData } from "../../AuthProvider";
+import { useAuth } from "../../AuthProvider";
 import Form from "./Form";
 
 const Login = () => {
   const history = useHistory();
-  const { login } = useAuthData();
+  const { login } = useAuth();
 
   const handleSuccessfulLogin = (user) => {
     login(user);

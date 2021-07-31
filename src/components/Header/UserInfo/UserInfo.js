@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { useAuthData } from "../../../AuthProvider";
+import { useAuth } from "../../../AuthProvider";
 
 import "./UserInfo.scss";
 
 const UserInfo = () => {
-  const { name } = useAuthData();
+  const { name, logout } = useAuth();
 
   return (
     <div className="user-info">
