@@ -1,6 +1,6 @@
 import React from "react";
 
-function Dropdown({ onChange, options = [], value = "" }) {
+const Dropdown = ({ onChange, options = [], ...rest }) => {
   const handleChange = (event) => {
     if (onChange) {
       onChange(event.target.value);
@@ -8,7 +8,7 @@ function Dropdown({ onChange, options = [], value = "" }) {
   };
 
   return (
-    <select onChange={handleChange} value={value}>
+    <select onChange={handleChange} {...rest}>
       {options.map((option, index) => (
         <option key={index} value={option}>
           {option}
@@ -16,6 +16,6 @@ function Dropdown({ onChange, options = [], value = "" }) {
       ))}
     </select>
   );
-}
+};
 
 export default Dropdown;
