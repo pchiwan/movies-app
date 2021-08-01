@@ -4,10 +4,10 @@ import Movie from "../Movie";
 
 import "./MovieList.scss";
 
-const MovieList = ({ list = [] }) => {
+const MovieList = ({ movies = [] }) => {
   return (
     <div className="movie-list">
-      {list.map((m) => (
+      {movies.map((m) => (
         <Movie key={m.title} movie={m} />
       ))}
     </div>
