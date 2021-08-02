@@ -2,7 +2,7 @@ import { API_URL } from "./config";
 
 const USER_API_URL = `${API_URL}/user/favorites`;
 
-export async function getUserFavorites() {
+export async function getUserFavorites(abortCtrl) {
   const response = await fetch(USER_API_URL, {
     method: "GET",
     credentials: "include",
@@ -11,6 +11,7 @@ export async function getUserFavorites() {
       Accept: "application/json",
       "Access-Control-Allow-Origin": window.location.origin,
     },
+    signal: abortCtrl.signal,
   });
   const data = await response.json();
   return data.favorites;

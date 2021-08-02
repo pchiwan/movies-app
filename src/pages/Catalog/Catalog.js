@@ -21,14 +21,19 @@ const Catalog = ({ fetchMethod }) => {
   }, [movieList]);
 
   useEffect(() => {
+    const abortCtrl = new AbortController();
+
     async function load() {
       try {
-        setMovieList(await fetchMethod());
+        setMovieList(await fetchMethod(abortCtrl));
       } catch (err) {
         console.error(err);
       }
     }
+
     load();
+
+    return () => abortCtrl.abort();
   }, [fetchMethod]);
 
   useEffect(() => {

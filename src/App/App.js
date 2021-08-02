@@ -5,40 +5,51 @@ import Login, { Register } from "../pages/Login";
 import Catalog from "../pages/Catalog";
 import NotFound from "../pages/NotFound";
 import Header from "../components/Header";
+import Spinner from "../components/Spinner";
 import AuthProvider from "../AuthProvider";
 import ResponsiveProvider from "../ResponsiveProvider";
+import { useLoadingStatus } from "../LoadingStatusProvider";
 import { getAllMovies } from "../services/moviesService";
 import { getUserFavorites } from "../services/userService";
 
 import "./App.scss";
 
 function App() {
+  const { isLoading } = useLoadingStatus();
+
   return (
     <div className="app">
       <AuthProvider>
-        <ResponsiveProvider>
-          <Router>
-            <Header />
-            <main>
-              <Switch>
-                <Route
-                  exact
-                  path="/"
-                  render={() => <Catalog fetchMethod={getAllMovies} />}
-                />
-                <Route
-                  path="/user"
-                  render={() => <Catalog fetchMethod={getUserFavorites} />}
-                />
-                <Route path="/login" component={Login} />
-                <Route path="/register" component={Register} />
-                <Route path="*">
-                  <NotFound />
-                </Route>
-              </Switch>
-            </main>
-          </Router>
-        </ResponsiveProvider>
+        {isLoading ? (
+          <div className="app-spinner">
+            <Spinner />
+            <span>Loading</span>
+          </div>
+        ) : (
+          <ResponsiveProvider>
+            <Router>
+              <Header />
+              <main>
+                <Switch>
+                  <Route
+                    exact
+                    path="/"
+                    render={() => <Catalog fetchMethod={getAllMovies} />}
+                  />
+                  <Route
+                    path="/user"
+                    render={() => <Catalog fetchMethod={getUserFavorites} />}
+                  />
+                  <Route path="/login" component={Login} />
+                  <Route path="/register" component={Register} />
+                  <Route path="*">
+                    <NotFound />
+                  </Route>
+                </Switch>
+              </main>
+            </Router>
+          </ResponsiveProvider>
+        )}
       </AuthProvider>
     </div>
   );

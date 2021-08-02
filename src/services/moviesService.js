@@ -2,8 +2,10 @@ import { API_URL } from "./config";
 
 const MOVIES_API_URL = API_URL;
 
-export async function getAllMovies() {
-  const response = await fetch(MOVIES_API_URL);
+export async function getAllMovies(abortCtrl) {
+  const response = await fetch(MOVIES_API_URL, {
+    signal: abortCtrl.signal,
+  });
   const data = await response.json();
   return data.movies;
 }
