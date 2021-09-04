@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 
+import { useAuth } from "../../AuthProvider";
 import MovieList from "../../components/MovieList";
 import Selector from "../../components/Selector";
 
@@ -10,6 +11,7 @@ const Catalog = ({ fetchMethod }) => {
   const [displayedMovies, setDisplayedMovies] = useState([]);
   const [selectedSort, setSelectedSort] = useState("Title");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const { isAuthenticated } = useAuth();
 
   const sortBy = ["Title", "Category", "Year"];
 
@@ -69,7 +71,10 @@ const Catalog = ({ fetchMethod }) => {
           />
         </div>
       </div>
-      <MovieList movies={displayedMovies} />
+      <MovieList
+        isFavControlVisible={isAuthenticated}
+        movies={displayedMovies}
+      />
     </div>
   );
 };

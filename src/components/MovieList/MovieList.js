@@ -4,11 +4,15 @@ import Movie from "../Movie";
 
 import "./MovieList.scss";
 
-const MovieList = ({ movies = [] }) => {
+const MovieList = ({ isFavControlVisible, movies = [] }) => {
   return (
     <div className="movie-list">
       {movies.map((m) => (
-        <Movie key={m.title} movie={m} />
+        <Movie
+          key={m.title}
+          isFavControlVisible={isFavControlVisible}
+          movie={m}
+        />
       ))}
     </div>
   );
