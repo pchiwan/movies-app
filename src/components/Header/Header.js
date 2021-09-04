@@ -22,12 +22,7 @@ const Header = () => {
         </span>
       </h1>
       {showBurgerMenu && <Burger />}
-      {!showBurgerMenu && (
-        <>
-          <Navbar />
-          <UserInfo />
-        </>
-      )}
+      {!showBurgerMenu && <UserInfo />}
     </header>
   );
 };
