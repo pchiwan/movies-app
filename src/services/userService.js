@@ -17,7 +17,7 @@ export async function getUserFavorites(abortCtrl) {
   return data.favorites;
 }
 
-export function addToFavorites(data) {
+export function addToFavorites(id) {
   return fetch(USER_API_URL, {
     method: "POST",
     credentials: "include",
@@ -26,7 +26,9 @@ export function addToFavorites(data) {
       Accept: "application/json",
       "Access-Control-Allow-Origin": window.location.origin,
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify({
+      _id: id,
+    }),
   });
 }
 
