@@ -9,8 +9,6 @@ import Spinner from "../components/Spinner";
 import AuthProvider from "../AuthProvider";
 import ResponsiveProvider from "../ResponsiveProvider";
 import { useLoadingStatus } from "../LoadingStatusProvider";
-import { getAllMovies } from "../services/moviesService";
-import { getUserFavorites } from "../services/userService";
 
 import "./App.scss";
 
@@ -31,15 +29,7 @@ function App() {
               <Header />
               <main>
                 <Switch>
-                  <Route
-                    exact
-                    path="/"
-                    render={() => <Catalog fetchMethod={getAllMovies} />}
-                  />
-                  <Route
-                    path="/user"
-                    render={() => <Catalog fetchMethod={getUserFavorites} />}
-                  />
+                  <Route exact path="/" component={Catalog} />
                   <Route path="/login" component={Login} />
                   <Route path="/register" component={Register} />
                   <Route path="*">

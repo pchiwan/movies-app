@@ -1,15 +1,20 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
+import { useAuth } from "../../AuthProvider";
 import MovieList from "../../components/MovieList";
 import Selector from "../../components/Selector";
+import { getAllMovies } from "../../services/moviesService";
+import * as userService from "../../services/userService";
 
 import "./Catalog.scss";
 
-const Catalog = ({ fetchMethod }) => {
+const Catalog = () => {
   const [movieList, setMovieList] = useState([]);
+  const [userFavorites, setUserFavorites] = useState([]);
   const [displayedMovies, setDisplayedMovies] = useState([]);
   const [selectedSort, setSelectedSort] = useState("Title");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const { isAuthenticated } = useAuth();
 
   const sortBy = ["Title", "Category", "Year"];
 
@@ -20,12 +25,19 @@ const Catalog = ({ fetchMethod }) => {
     return Array.from(categorySet);
   }, [movieList]);
 
+  const fetchFavorites = useCallback(async () => {
+    const abortCtrl = new AbortController();
+
+    const favs = await userService.getUserFavorites(abortCtrl);
+    setUserFavorites(favs.map((f) => f._id));
+  }, []);
+
   useEffect(() => {
     const abortCtrl = new AbortController();
 
     async function load() {
       try {
-        setMovieList(await fetchMethod(abortCtrl));
+        setMovieList(await getAllMovies(abortCtrl));
       } catch (err) {
         console.error(err);
       }
@@ -34,7 +46,13 @@ const Catalog = ({ fetchMethod }) => {
     load();
 
     return () => abortCtrl.abort();
-  }, [fetchMethod]);
+  }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchFavorites();
+    }
+  }, [fetchFavorites, isAuthenticated]);
 
   useEffect(() => {
     let output = [];
@@ -50,10 +68,33 @@ const Catalog = ({ fetchMethod }) => {
     setDisplayedMovies(output);
   }, [movieList, selectedCategory, selectedSort]);
 
+  const toggleFavorite = useCallback(
+    async (movie) => {
+      const movieUpdatedPromise = new Promise(async (resolve, reject) => {
+        try {
+          if (userFavorites.includes(movie._id)) {
+            await userService.deleteFromFavorites(movie._id);
+            resolve();
+          } else {
+            await userService.addToFavorites(movie._id);
+            resolve();
+          }
+        } catch (err) {
+          reject(err);
+        }
+      });
+
+      movieUpdatedPromise.then(() => {
+        fetchFavorites();
+      });
+    },
+    [fetchFavorites, userFavorites]
+  );
+
   return (
     <div>
       <div className="controls">
-        <div>Search placeholder</div>
+        <div>{/* search will go here */}</div>
         <div>
           <Selector
             label="Sort by:"
@@ -69,7 +110,12 @@ const Catalog = ({ fetchMethod }) => {
           />
         </div>
       </div>
-      <MovieList movies={displayedMovies} />
+      <MovieList
+        isFavControlVisible={isAuthenticated}
+        movies={displayedMovies}
+        onMovieClick={toggleFavorite}
+        userFavorites={userFavorites}
+      />
     </div>
   );
 };

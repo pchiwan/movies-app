@@ -1,14 +1,89 @@
-.movie-poster {
+.clickable {
+  cursor: pointer;
+}
+
+.movie-poster-wrapper {
   width: 200px;
   height: 300px;
-  border: 2px solid lavenderblush;
-  background-size: cover;
-  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: scale(1.04, 1.04);
+    transition: transform 100ms;
+  }
+
+  .movie-poster {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    height: 100%;
+  }
+
+  .movie-poster-fav {
+    position: absolute;
+    top: -37px;
+    right: -37px;
+    height: 75px;
+    width: 75px;
+    background-color: crimson;
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.8);
+    transform: rotate(-45deg);
+    pointer-events: none;
+
+    i {
+      color: lavenderblush;
+      transform: rotate(45deg);
+      position: relative;
+      top: 28px;
+      right: -4px;
+      font-size: 20px;
+      text-shadow: 2px 2px rgb(0, 0, 0, 80%);
+    }
+  }
+
+  .movie-poster-fav-control {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      font-size: 80px;
+      pointer-events: none;
+    }
+  }
+
+  .movie-border {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid lavenderblush;
+    box-sizing: border-box;
+  }
+}
+
+.ripple {
   background-position: center;
+  transition: background 1.25s;
+}
+
+.ripple:hover {
+  background: transparent radial-gradient(circle, transparent 1%, #ffffff44 1%)
+    center/150000%;
+}
+
+.ripple:active {
+  background-color: transparent;
+  background-size: 100%;
+  transition: background 0s;
 }
 
 @media (max-width: 1000px) {
-  .movie-poster {
+  .movie-poster-wrapper {
     width: 128px;
     height: 190px;
   }
