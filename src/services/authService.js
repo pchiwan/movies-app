@@ -13,6 +13,12 @@ export async function register(data) {
     },
     body: JSON.stringify(data),
   });
+
+  if (response.status !== 200) {
+    const error = await response.json();
+    throw new Error(error.message);
+  }
+
   return response.json();
 }
 
