@@ -28,7 +28,7 @@ function Movie({
   const handleClick = () => onClick(movie);
 
   return (
-    <div key={movie._id} className="movie" onClick={handleClick}>
+    <div className="movie" onClick={handleClick}>
       <MoviePoster
         isFavControlVisible={isFavControlVisible}
         isFavorited={isFavorited}
@@ -38,8 +38,8 @@ function Movie({
       <label className="movie-info">{movie.category}</label>
       <label className="movie-info">{movie.year}</label>
       <label className="movie-rating">
-        {rating.map((r) => (
-          <i className={r} />
+        {rating.map((r, index) => (
+          <i key={index} className={r} />
         ))}
       </label>
     </div>
