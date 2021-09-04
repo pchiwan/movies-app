@@ -1,7 +1,6 @@
 import React from "react";
 
 import Burger from "./Burger";
-import Navbar from "./Navbar";
 import UserInfo from "./UserInfo";
 import { useWidth } from "../../ResponsiveProvider";
 
