@@ -43,6 +43,7 @@ function MoviePoster({ isFavControlVisible, isFavorited, src }) {
         isFavControlVisible ? "clickable" : ""
       }`}
     >
+      <div className="movie-border" />
       {isFavControlVisible && (
         <div
           className="movie-poster-fav-control ripple"
