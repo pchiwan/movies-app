@@ -28,7 +28,7 @@ function Movie({
   const handleClick = () => onClick(movie);
 
   return (
-    <div key={movie.title} className="movie" onClick={handleClick}>
+    <div key={movie._id} className="movie" onClick={handleClick}>
       <MoviePoster
         isFavControlVisible={isFavControlVisible}
         isFavorited={isFavorited}

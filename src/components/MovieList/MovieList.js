@@ -9,7 +9,7 @@ const MovieList = ({ isFavControlVisible, movies = [] }) => {
     <div className="movie-list">
       {movies.map((m) => (
         <Movie
-          key={m.title}
+          key={m._id}
           isFavControlVisible={isFavControlVisible}
           movie={m}
         />
