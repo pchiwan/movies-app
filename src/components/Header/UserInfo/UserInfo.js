@@ -2,16 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import * as authService from "../../../services/authService";
+import { useLoadingStatus } from "../../../LoadingStatusProvider";
 import { useAuth } from "../../../AuthProvider";
 
 import "./UserInfo.scss";
 
 const UserInfo = () => {
   const { name, logout } = useAuth();
+  const { setIsLoading } = useLoadingStatus();
 
   const handleLogout = async () => {
     await authService.logout();
     logout();
+    setIsLoading(true);
+    window.location.reload();
   };
 
   return (

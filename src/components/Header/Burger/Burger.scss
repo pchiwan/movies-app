@@ -45,20 +45,26 @@
     background-color: black;
     border: 1px solid #555;
     border-radius: 4px;
+    z-index: 2;
 
     li {
       padding: 12px;
       border-bottom: 1px solid #222;
+      user-select: none;
 
-      a {
+      a,
+      span {
         display: block;
         text-decoration: none;
         color: lavenderblush;
         font-weight: bold;
       }
 
-      &:hover {
-        background-color: crimson;
+      &.clickable {
+        cursor: pointer;
+        &:hover {
+          background-color: crimson;
+        }
       }
     }
   }
