@@ -4,3 +4,15 @@
   margin-bottom: 20px;
   padding: 10px;
 }
+
+.controls-selectors {
+  display: flex;
+}
+
+@media (max-width: 740px) {
+  .controls-selectors {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+}

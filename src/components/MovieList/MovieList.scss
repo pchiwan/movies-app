@@ -1,8 +1,14 @@
 .movie-list {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   row-gap: 10px;
+}
+
+@media (min-width: 480px) and (max-width: 740px) {
+  .movie-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (min-width: 741px) and (max-width: 1400px) {

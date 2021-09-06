@@ -95,7 +95,7 @@ const Catalog = () => {
     <div>
       <div className="controls">
         <div>{/* search will go here */}</div>
-        <div>
+        <div className="controls-selectors">
           <Selector
             label="Sort by:"
             onChange={setSelectedSort}
