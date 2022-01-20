@@ -7,8 +7,10 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "build": "cd ./src/client && npm run build && cd ../../ && npm run copyFiles",
-    "copyFiles": "rm -rf ./src/public && mkdir ./src/public && cp -Rv ./src/client/build/* ./src/public"
+    "build": "npm run install:client:deps && npm run build:client && npm run copy:files",
+    "build:client": "cd ./src/client && npm run build && cd ../../",
+    "install:client:deps": "cd ./src/client && yarn && cd ../../",
+    "copy:files": "rm -rf ./src/public && mkdir ./src/public && cp -Rv ./src/client/build/* ./src/public"
   },
   "dependencies": {
     "connect-mongo": "^3.2.0",
