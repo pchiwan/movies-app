@@ -1,6 +1,4 @@
-import { API_URL } from "./config";
-
-const MOVIES_API_URL = API_URL;
+const MOVIES_API_URL = "/api/movies";
 
 export async function getAllMovies(abortCtrl) {
   const response = await fetch(MOVIES_API_URL, {

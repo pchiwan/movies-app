@@ -1,0 +1,7 @@
+{
+  "search.exclude": {
+    "**/build": true,
+    "src/public": true
+  },
+  "editor.formatOnSave": true
+}

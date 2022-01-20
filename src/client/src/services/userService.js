@@ -1,6 +1,4 @@
-import { API_URL } from "./config";
-
-const USER_API_URL = `${API_URL}/user/favorites`;
+const USER_API_URL = "api/user/favorites";
 
 export async function getUserFavorites(abortCtrl) {
   const response = await fetch(USER_API_URL, {
@@ -8,8 +6,6 @@ export async function getUserFavorites(abortCtrl) {
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json",
-      "Access-Control-Allow-Origin": window.location.origin,
     },
     signal: abortCtrl.signal,
   });
@@ -23,8 +19,6 @@ export function addToFavorites(id) {
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json",
-      "Access-Control-Allow-Origin": window.location.origin,
     },
     body: JSON.stringify({
       _id: id,
@@ -38,8 +32,6 @@ export function deleteFromFavorites(id) {
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json",
-      "Access-Control-Allow-Origin": window.location.origin,
     },
   });
 }

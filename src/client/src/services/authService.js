@@ -1,15 +1,10 @@
-import { API_URL } from "./config";
-
-const AUTH_API_URL = `${API_URL}/auth`;
+const AUTH_API_URL = "/api/auth";
 
 export async function register(data) {
   const response = await fetch(`${AUTH_API_URL}/register`, {
     method: "POST",
-    credentials: "include",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json",
-      "Access-Control-Allow-Origin": window.location.origin,
     },
     body: JSON.stringify(data),
   });
@@ -25,11 +20,8 @@ export async function register(data) {
 export async function login(data) {
   const response = await fetch(`${AUTH_API_URL}/login`, {
     method: "POST",
-    credentials: "include",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json",
-      "Access-Control-Allow-Origin": window.location.origin,
     },
     body: JSON.stringify(data),
   });
@@ -47,8 +39,6 @@ export function logout() {
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json",
-      "Access-Control-Allow-Origin": window.location.origin,
     },
   });
 }
@@ -59,7 +49,6 @@ export async function getLoggedUser() {
     credentials: "include",
     headers: {
       Accept: "application/json",
-      "Access-Control-Allow-Origin": window.location.origin,
     },
   });
 

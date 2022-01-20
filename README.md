@@ -1,28 +1,42 @@
-# Movies App frontend
+# Movies app :movie_camera:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the final project of the Web dev bootcamp.
+The idea is to apply all the knowledge that we acquire in our theoric sessions and applied to build and awesome movie app! 
 
-## Available Scripts
+## Main functionalities
+* :white_check_mark:  Display all the movies (Guest view/User view with additional functionalities)
+* :white_check_mark:  Display movies by category (Clicking the category name, will display all the movies from that category)
+* :white_check_mark:  Search movies by title (No matter if it's a partial or a complete title)
+* :white_check_mark:  Registration/Login flow (with email - password verification)
+* :white_check_mark:  Display users' favorite movies list
+* :white_check_mark:  Users can add/remove movies from their fav list
 
-In the project directory, you can run:
 
-### `yarn start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Execute ```npm install``` from inside your app directory to download the dependencies.
+In addition, remember that you need to have up and running mongo if you want to test the application locally. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+## API
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Method | Endpoint      | Functionality | Private access?
+-------| ------------ | ------------- | -------------
+POST | /auth/register | Register a user. Email and password are need it (AutoLogin) |  :unlock:
+POST | /auth/login | Login with email&password |  :unlock: 
+GET | /auth/logout | |  :unlock: 
+GET | / | Display all movies |  :unlock: :closed_lock_with_key:  
+GET | /categories/:category | Display all movies by category i.e. _Adventure_ | :unlock:
+GET | /search | By title | :unlock:
+GET | /:id | Get movie by id | :unlock:
+GET | /user/favorites | Display all my favorites movies | :closed_lock_with_key: 
+POST | /user/favorites | Add movie to my favorites | :closed_lock_with_key:
+DELETE | /user/favorites/:id | Delete a movie from my favorite | :closed_lock_with_key:
 
-### `yarn build`
+## Licence
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Marta Bondyra: https://github.com/mbondyra
+* Manana Jaworska: https://github.com/Manana101 
+* Silvia Mur: https://github.com/pchiwan 
+* Jessica Perez: https://github.com/JessicaPG 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!

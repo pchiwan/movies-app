@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "ffe45b46-3f5f-4e02-888e-4f4b6b3534f8",
+		"name": "Movies",
+		"description": "Movies app - Allwoman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAllMovies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}{{port}}/",
+					"host": [
+						"{{localhost}}{{port}}"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": "Display all movies"
+			},
+			"response": []
+		},
+		{
+			"name": "getMoviesByCategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}{{port}}/categories/Adventure",
+					"host": [
+						"{{localhost}}{{port}}"
+					],
+					"path": [
+						"categories",
+						"Adventure"
+					]
+				},
+				"description": "Display all the movies of a specific category"
+			},
+			"response": []
+		},
+		{
+			"name": "searchByTitle",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disableUrlEncoding": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}{{port}}/search?title=spider",
+					"host": [
+						"{{localhost}}{{port}}"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "spider"
+						}
+					]
+				},
+				"description": "Search movie by exact title or with some parts of the title (Jurassic or Jurassic Parc)"
+			},
+			"response": []
+		},
+		{
+			"name": "findMovieById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}{{port}}/5ff5dd14f854a51c44f8c0e8",
+					"host": [
+						"{{localhost}}{{port}}"
+					],
+					"path": [
+						"5ff5dd14f854a51c44f8c0e8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserFavoritesMovies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}{{port}}/user/favorites",
+					"host": [
+						"{{localhost}}{{port}}"
+					],
+					"path": [
+						"user",
+						"favorites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addMovieToUsersFavorites",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"5ff5dd14f854a51c44f8c0e8\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}{{port}}/user/favorites",
+					"host": [
+						"{{localhost}}{{port}}"
+					],
+					"path": [
+						"user",
+						"favorites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"email3@email.com\",\n    \"password\" : \"1234\",\n    \"name\" : \"username\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}{{port}}/auth/register",
+					"host": [
+						"{{localhost}}{{port}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}{{port}}/auth/logout",
+					"host": [
+						"{{localhost}}{{port}}"
+					],
+					"path": [
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteMovieFromUserFavorites",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}{{port}}/user/favorites/4",
+					"host": [
+						"{{localhost}}{{port}}"
+					],
+					"path": [
+						"user",
+						"favorites",
+						"4"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"email1@email.com\",\n    \"password\" : \"1234\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}{{port}}/auth/login",
+					"host": [
+						"{{localhost}}{{port}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
