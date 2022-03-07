@@ -66,11 +66,11 @@ exports.register = (req, res, next) => {
 };
 
 exports.getUser = (req, res) => {
-  res.status(200);
-
   if (!req.isAuthenticated()) {
+    res.status(401);
     res.send();
   } else {
+    res.status(200);
     res.json({
       email: req.user.email,
       name: req.user.name,
