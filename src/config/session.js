@@ -1,11 +1,10 @@
-const mongoose = require("mongoose");
 const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
+const MongoStore = require("connect-mongo");
 
-const { ONE_DAY } = require("../utils/constants");
+const { ONE_WEEK } = require("../utils/constants");
 
 const sessionStore = new MongoStore({
-  mongooseConnection: mongoose.connection,
+  mongoUrl: process.env.MONGO_URL,
   collection: "sessions",
 });
 
@@ -18,7 +17,7 @@ const options = {
   unset: "destroy",
   cookie: {
     httpOnly: true,
-    maxAge: ONE_DAY,
+    maxAge: ONE_WEEK,
     secure: process.env.NODE_ENV === "production",
     sameSite: true,
   },
