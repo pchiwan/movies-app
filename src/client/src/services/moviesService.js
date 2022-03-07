@@ -1,4 +1,6 @@
-const MOVIES_API_URL = "/api/movies";
+import { BASE_API_URL } from "./config";
+
+const MOVIES_API_URL = `${BASE_API_URL}/api/movies`;
 
 export async function getAllMovies(abortCtrl) {
   const response = await fetch(MOVIES_API_URL, {

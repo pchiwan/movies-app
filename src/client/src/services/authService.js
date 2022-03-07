@@ -1,4 +1,6 @@
-const AUTH_API_URL = "/api/auth";
+import { BASE_API_URL } from "./config";
+
+const AUTH_API_URL = `${BASE_API_URL}/api/auth`;
 
 export async function register(data) {
   const response = await fetch(`${AUTH_API_URL}/register`, {

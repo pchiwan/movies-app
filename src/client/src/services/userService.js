@@ -1,4 +1,6 @@
-const USER_API_URL = "api/user/favorites";
+import { BASE_API_URL } from "./config";
+
+const USER_API_URL = `${BASE_API_URL}/api/user/favorites`;
 
 export async function getUserFavorites(abortCtrl) {
   const response = await fetch(USER_API_URL, {
