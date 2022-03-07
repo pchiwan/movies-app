@@ -17,21 +17,6 @@ connectDB();
 const app = express();
 
 /**
- * ========== CORS SETUP ==========
- */
-
-app.use(
-  cors({
-    credentials: true,
-    origin: [
-      "http://localhost:3000",
-      "https://allwomen-movies-app.herokuapp.com/",
-    ],
-  })
-);
-app.set("trust proxy", 1);
-
-/**
  * ========== SESSION SETUP && PASSPORT AUTHENTICATION ==========
  */
 
@@ -40,6 +25,30 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./config/passport");
+
+/**
+ * ========== CORS SETUP ==========
+ */
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Origin", req.headers.origin);
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept"
+  );
+  next();
+});
+
+app.use(
+  cors({
+    credentials: true,
+    origin: ["https://allwomen-movies-app.herokuapp.com/"],
+    allowedHeaders: ["Origin, X-Requested-With, Content-Type, Accept"],
+  })
+);
+app.set("trust proxy", 1);
 
 /**
  * ========== ROUTES ==============
