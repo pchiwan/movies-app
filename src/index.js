@@ -67,6 +67,12 @@ app.use("/api/auth", authRouter);
 app.use("/api/user", usersRouter);
 app.use("/api/movies", catalogRouter);
 
+// fallback route for handling client application routes
+// https://create-react-app.dev/docs/deployment/
+app.get("/*", function (_, res) {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 /**
  * ========== ERROR HANDLER ==============
  */
